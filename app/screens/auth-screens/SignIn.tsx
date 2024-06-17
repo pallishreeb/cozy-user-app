@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   Alert,
   TextInput,
+  Platform,
 } from 'react-native';
 import {
   responsiveHeight as rh,
@@ -39,6 +40,9 @@ export default ({navigation}: SignInScreenProps) => {
     setPasswordVisible(!passwordVisible);
   };
   useEffect(() => {
+    if (Platform.OS === 'ios') {
+      StatusBar.setBarStyle('dark-content');
+    }
     validateForm();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [email, password]);
@@ -72,7 +76,6 @@ export default ({navigation}: SignInScreenProps) => {
       console.log('Form has errors. Please correct them.');
       Alert.alert('Errors', 'Form has errors. Please correct them.');
     }
-    console.log(email,password);  
     try {
       setIsLoading(true);
       const response = await axiosPublic.post(`${endpoints.LOGIN}`, {
@@ -96,7 +99,11 @@ export default ({navigation}: SignInScreenProps) => {
     <SafeAreaView style={styles.mainContainer}>
       <KeyboardAwareScrollView
         contentContainerStyle={styles.scrollViewContainer}>
-        <StatusBar backgroundColor={'#FF3131'} barStyle="light-content" />
+        <StatusBar
+          backgroundColor={'#FF3131'}
+          barStyle="light-content"
+          translucent={false}
+        />
         <View style={styles.formContainer}>
           <Text style={styles.headingText1}>{'Login to continue'}</Text>
           <Text style={styles.headingText2}>{'Welcome Back'}</Text>

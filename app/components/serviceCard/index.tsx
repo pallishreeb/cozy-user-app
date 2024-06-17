@@ -24,19 +24,26 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
         uri: `${IMAGE_URL}/profile_pic/${service?.profile_pic}`,
       }
     : require('../../assets/user-placeholder.png');
+  const addressExists =
+    service.address ||
+    service.city ||
+    service.state ||
+    service.country ||
+    service.zipcode;
   return (
     <View style={styles.card}>
       <Image source={profileImage} style={styles.image} />
       <View style={styles.details}>
         <Text style={styles.providerName}>{service.name}</Text>
-        <View style={styles.locationRow}>
-          <Icon2 name="location-on" size={20} color="#5B5B5B" />
-          <Text style={styles.location}>
-            {service.address} {service.city} {service.state} {service.country}{' '}
-            {service.zipcode}
-          </Text>
-        </View>
-
+        {addressExists && (
+          <View style={styles.locationRow}>
+            <Icon2 name="location-on" size={20} color="#5B5B5B" />
+            <Text style={styles.location}>
+              {service.address} {service.city} {service.state} {service.country}{' '}
+              {service.zipcode}
+            </Text>
+          </View>
+        )}
         <TouchableOpacity style={styles.button} onPress={handleBookService}>
           <Icon
             name="calendar-clock-outline"
@@ -71,7 +78,7 @@ const styles = StyleSheet.create({
   details: {
     marginLeft: responsiveWidth(2.5),
     flex: 1,
-    justifyContent: 'space-around',
+    justifyContent: 'space-evenly',
   },
   providerName: {
     fontWeight: 'bold',
@@ -79,8 +86,8 @@ const styles = StyleSheet.create({
     fontSize: responsiveFontSize(2.25),
   },
   locationRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    // flexDirection: 'row',
+    // alignItems: 'center',
   },
   location: {
     color: '#666',

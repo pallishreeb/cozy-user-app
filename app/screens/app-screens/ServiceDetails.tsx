@@ -62,6 +62,12 @@ const ServiceDetails = ({navigation, route}: ServiceDetailsScreenProps) => {
   const fullAddress = `${provider?.address || ''} ${provider?.city} ${
     provider?.state
   }  ${provider?.country}  ${provider?.zipcode}`;
+  const addressExists =
+    provider?.address ||
+    provider?.city ||
+    provider?.state ||
+    provider?.country ||
+    provider?.zipcode;
   const serviceName = provider?.service?.name || 'N/A';
   const categoryName = provider?.service?.category?.name || 'N/A';
   const providerProfilePic = provider?.profile_pic
@@ -76,16 +82,21 @@ const ServiceDetails = ({navigation, route}: ServiceDetailsScreenProps) => {
     <View style={{flexDirection: 'row', alignItems: 'center'}}>
       {discountPercentage > 0 ? (
         <>
-          <Text style={{textDecorationLine: 'line-through', marginRight: 4}}>
+          <Text
+            style={{
+              textDecorationLine: 'line-through',
+              marginRight: 4,
+              color: '#000',
+            }}>
             ${originalRate}
           </Text>
-          <Text style={{fontWeight: 'bold', marginRight: 4}}>
+          <Text style={{fontWeight: 'bold', marginRight: 4, color: '#000'}}>
             ${discountedRate}
           </Text>
-          <Text>({discountPercentage}% off)</Text>
+          <Text style={{color: '#000'}}>({discountPercentage}% off)</Text>
         </>
       ) : (
-        <Text>${originalRate}</Text>
+        <Text style={{color: '#000'}}>${originalRate}</Text>
       )}
     </View>
   );
@@ -108,10 +119,12 @@ const ServiceDetails = ({navigation, route}: ServiceDetailsScreenProps) => {
             <Image source={providerProfilePic} style={styles.serviceImage} />
             <View style={styles.infoContainer}>
               <Text style={styles.name}>{provider?.name}</Text>
-              <View style={styles.locationRow}>
-                <Icon2 name="location-on" size={20} color="#5B5B5B" />
-                <Text style={styles.address}>{fullAddress}</Text>
-              </View>
+              {addressExists && (
+                <View style={styles.locationRow}>
+                  <Icon2 name="location-on" size={20} color="#5B5B5B" />
+                  <Text style={styles.address}>{fullAddress}</Text>
+                </View>
+              )}
               {provider?.mobile_number && (
                 <View style={styles.locationRow}>
                   <Icon2 name="phone" size={20} color="#5B5B5B" />
@@ -256,17 +269,20 @@ const styles = StyleSheet.create({
   },
   infoContainer: {
     flex: 1,
-    justifyContent: 'space-around',
+    justifyContent: 'space-evenly',
   },
   name: {
     fontSize: responsiveFontSize(2.2),
     fontWeight: 'bold',
+    color: '#000',
   },
   address: {
     fontSize: responsiveFontSize(1.8),
+    color: '#000',
   },
   phone: {
     fontSize: responsiveFontSize(1.8),
+    color: '#000',
   },
   buttonsContainer: {
     flexDirection: 'row',
@@ -313,6 +329,7 @@ const styles = StyleSheet.create({
   },
   cardIcon: {
     marginRight: responsiveWidth(4),
+    color: '#000',
   },
   cardTextContainer: {
     flex: 1,
@@ -322,15 +339,18 @@ const styles = StyleSheet.create({
   cardTitle: {
     fontSize: responsiveFontSize(2),
     fontWeight: 'bold',
+    color: '#000',
   },
   cardValue: {
     fontSize: responsiveFontSize(2),
+    color: '#000',
   },
   subHeading: {
     fontSize: responsiveFontSize(2.5),
     fontWeight: 'bold',
     marginTop: responsiveHeight(2),
     marginBottom: responsiveHeight(1),
+    color: '#000',
   },
 
   errorText: {

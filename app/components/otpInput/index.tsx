@@ -5,6 +5,7 @@ import {
   responsiveWidth as rw,
   responsiveFontSize as rf,
 } from 'react-native-responsive-dimensions';
+
 export default ({
   setCurrentOtp,
 }: {
@@ -23,12 +24,11 @@ export default ({
           marginVertical: rh(3),
           width: rw(90),
         },
-        inputsContainerStyle: {},
         pinCodeContainerStyle: {
           height: rh(5.5),
           width: rw(14),
-          borderRadius: rf(0.5),
-          borderWidth: rf(0.1),
+          borderRadius: 10, // Adjusted radius
+          borderWidth: 1, // Adjusted border width
         },
       }}
     />

@@ -36,6 +36,7 @@ export default ({
       <TextInput
         style={styles.input}
         placeholder={placeholder}
+        placeholderTextColor="#888"
         value={value}
         onChangeText={text => setValue(text)}
         secureTextEntry={secureTextEntry}
@@ -65,5 +66,6 @@ const styles = StyleSheet.create({
   input: {
     flex: 1,
     paddingVertical: responsiveHeight(1.25),
+    color: '#000',
   },
 });

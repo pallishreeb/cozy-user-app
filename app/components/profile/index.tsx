@@ -143,6 +143,7 @@ const Profile: React.FC<ProfileFormProps> = ({
             placeholder="12345"
             value={zipcode as string}
             onChangeText={text => setZipcode(text)}
+            placeholderTextColor="#888"
           />
         </View>
 
@@ -153,6 +154,7 @@ const Profile: React.FC<ProfileFormProps> = ({
             placeholder="Anytown"
             value={city as string}
             onChangeText={text => setCity(text)}
+            placeholderTextColor="#888"
           />
         </View>
       </View>
@@ -164,6 +166,7 @@ const Profile: React.FC<ProfileFormProps> = ({
             placeholder="Anystate"
             value={state as string}
             onChangeText={text => setState(text)}
+            placeholderTextColor="#888"
           />
         </View>
 
@@ -174,6 +177,7 @@ const Profile: React.FC<ProfileFormProps> = ({
             placeholder="Any Country"
             value={country as string}
             onChangeText={text => setCountry(text)}
+            placeholderTextColor="#888"
           />
         </View>
       </View>
@@ -229,6 +233,7 @@ const styles = StyleSheet.create({
     marginBottom: rh(1),
     borderRadius: rw(1.2),
     width: '100%',
+    color: '#000',
   },
   row: {
     flexDirection: 'row',

@@ -17,7 +17,7 @@ import {Alert,PermissionsAndroid} from 'react-native';
 import {axiosPrivate} from '../utils/axiosConfig';
 import {saveString, loadString} from '../utils/storage';
 import {endpoints} from '../constants';
-PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.POST_NOTIFICATIONS);
+// PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.POST_NOTIFICATIONS);
 
 export type AppStackParamList = {
   MyTabs: NavigatorScreenParams<BottomTabParamList> | undefined;

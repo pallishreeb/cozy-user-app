@@ -44,6 +44,7 @@ const ProfileInput = ({
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
         readOnly={readonly}
+        placeholderTextColor="#888"
       />
     </View>
   );
@@ -60,6 +61,7 @@ const styles = StyleSheet.create({
     borderRadius: rw(1.2),
     width: '100%',
     textAlignVertical: 'top',
+    color: '#000',
   },
   multilineInput: {
     paddingTop: rw(2.5),

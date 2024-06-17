@@ -1,4 +1,6 @@
 export const BASE_URL = 'http://13.36.243.41/api/';
+// export const BASE_URL = 'http://10.0.2.2:8000/api/';
+// https://idr.ensyncit.com/
 export const endpoints = {
   SIGN_UP: 'user/register',
   VERIFY_OTP: 'user/verify',
@@ -32,3 +34,4 @@ export const experience: {[key: string]: string} = {
   '11': '10+ Years',
 };
 export const IMAGE_URL = 'http://13.36.243.41/';
+// export const IMAGE_URL = 'http://10.0.2.2:8000/';

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
   Image,
   StatusBar,
@@ -19,6 +19,7 @@ import {
 import {useDispatch} from 'react-redux';
 import {remove} from '../../utils/storage';
 import {setSignOut} from '../../redux/slices/authSlice';
+import {Platform} from 'react-native';
 
 interface HeaderProps {
   handleNavigation: (event: GestureResponderEvent) => void;
@@ -60,6 +61,11 @@ const Header: React.FC<HeaderProps> = ({
       {cancelable: true},
     );
   };
+  useEffect(() => {
+    if (Platform.OS === 'ios') {
+      StatusBar.setBarStyle('dark-content');
+    }
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -94,6 +100,7 @@ const Header: React.FC<HeaderProps> = ({
         <TextInput
           placeholder={placeholder}
           onChangeText={handleSearch}
+          placeholderTextColor="#888"
           style={styles.searchInput}
         />
         <TouchableOpacity onPress={onPressSearch} style={styles.searchButton}>

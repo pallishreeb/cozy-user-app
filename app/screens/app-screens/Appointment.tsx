@@ -240,14 +240,14 @@
 //   },
 // });
 
-import {View, Text} from 'react-native';
+import {View, Text, SafeAreaView} from 'react-native';
 import React from 'react';
 
 const Appointment = () => {
   return (
-    <View>
-      <Text>Appointment</Text>
-    </View>
+    <SafeAreaView>
+      <Text style={{color: '#000'}}>Appointment Screen is in progress</Text>
+    </SafeAreaView>
   );
 };
 

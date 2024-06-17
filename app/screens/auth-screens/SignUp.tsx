@@ -114,8 +114,23 @@ export default ({navigation}: SignUpScreenProps) => {
         },
       ]);
     } catch (error: Error | any) {
-      console.log('inside catch', error.response);
-      Alert.alert('Information', `Sign Up failed \nPlease try again later`);
+       console.log('inside catch', error?.response);
+      // Extracting error message from the response
+      let errorMessage = 'Sign Up failed. Please try again later.';
+      if (error?.response?.data) {
+        // Checking if the response data contains specific error messages
+        const data = error.response.data;
+        if (data.email) {
+          errorMessage = data.email.join(', ');
+        } else if (data.password) {
+          errorMessage = data.password.join(', ');
+        } else if (data.name) {
+          errorMessage = data.name.join(', ');
+        } else {
+          errorMessage = JSON.stringify(data);
+        }
+      }
+      Alert.alert('Information', errorMessage);
     } finally {
       setIsLoading(false);
     }
