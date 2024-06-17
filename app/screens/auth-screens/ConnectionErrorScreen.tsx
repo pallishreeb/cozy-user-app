@@ -41,6 +41,7 @@ const styles = StyleSheet.create({
     width: rw(50),
     height: rh(30),
     marginBottom: rh(5),
+    backgroundColor: '#fff', // Ensures the background is white
   },
   errorText: {
     fontSize: rf(2.5),
