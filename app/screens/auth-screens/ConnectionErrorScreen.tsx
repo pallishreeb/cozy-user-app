@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   image: {
-    width: rw(50),
+    width: rw(60),
     height: rh(30),
     marginBottom: rh(5),
     backgroundColor: '#fff', // Ensures the background is white

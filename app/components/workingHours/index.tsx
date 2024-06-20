@@ -52,6 +52,7 @@ const styles = StyleSheet.create({
   dayName: {
     marginRight: 10,
     fontWeight: 'bold',
+    color: '#000',
   },
   timePickerBox: {
     borderWidth: 1,
@@ -62,9 +63,12 @@ const styles = StyleSheet.create({
     minWidth: rw(38),
     justifyContent: 'center',
     alignItems: 'center',
+    color: '#000',
   },
   closedBox: {
+    flex: 1,
     backgroundColor: '#D3D3D3',
+    alignItems: 'center',
   },
   closedText: {
     color: 'gray',

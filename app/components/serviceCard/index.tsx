@@ -86,8 +86,8 @@ const styles = StyleSheet.create({
     fontSize: responsiveFontSize(2.25),
   },
   locationRow: {
-    // flexDirection: 'row',
-    // alignItems: 'center',
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   location: {
     color: '#666',

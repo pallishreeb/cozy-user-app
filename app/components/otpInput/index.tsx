@@ -27,9 +27,10 @@ export default ({
         pinCodeContainerStyle: {
           height: rh(5.5),
           width: rw(14),
-          borderRadius: 10, // Adjusted radius
-          borderWidth: 1, // Adjusted border width
+          borderRadius: 10,
+          borderWidth: 1,
         },
+        pinCodeTextStyle: {color: '#000'},
       }}
     />
   );
