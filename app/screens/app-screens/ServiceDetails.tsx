@@ -102,53 +102,54 @@ const ServiceDetails = ({navigation, route}: ServiceDetailsScreenProps) => {
   );
   return (
     <SafeAreaView style={styles.container}>
-      <CustomHeader
-        isNotification={false}
-        onBackPress={() => navigation.goBack()}
-        onNotificationPress={() => navigation.navigate('Notification')}
-      />
-      {loading ? (
-        <Loader />
-      ) : error ? (
-        <Text style={styles.errorText}>
-          {error.message || 'An Unexpected Error  Occurred'}
-        </Text>
-      ) : (
-        <ScrollView style={styles.scrollView}>
-          <View style={styles.detailsContainer}>
-            <Image source={providerProfilePic} style={styles.serviceImage} />
-            <View style={styles.infoContainer}>
-              <Text style={styles.name}>{provider?.name}</Text>
-              {addressExists && (
-                <View style={styles.locationRow}>
-                  <Icon2 name="location-on" size={20} color="#5B5B5B" />
-                  <Text style={styles.address}>{fullAddress}</Text>
-                </View>
-              )}
-              {provider?.mobile_number && (
-                <View style={styles.locationRow}>
-                  <Icon2 name="phone" size={20} color="#5B5B5B" />
-                  <Text style={styles.phone}>{provider?.mobile_number}</Text>
-                </View>
-              )}
+      <View style={{flex: 1, backgroundColor: '#FFFFFF'}}>
+        <CustomHeader
+          isNotification={false}
+          onBackPress={() => navigation.goBack()}
+          onNotificationPress={() => navigation.navigate('Notification')}
+        />
+        {loading ? (
+          <Loader />
+        ) : error ? (
+          <Text style={styles.errorText}>
+            {error.message || 'An Unexpected Error  Occurred'}
+          </Text>
+        ) : (
+          <ScrollView style={styles.scrollView}>
+            <View style={styles.detailsContainer}>
+              <Image source={providerProfilePic} style={styles.serviceImage} />
+              <View style={styles.infoContainer}>
+                <Text style={styles.name}>{provider?.name}</Text>
+                {addressExists && (
+                  <View style={styles.locationRow}>
+                    <Icon2 name="location-on" size={20} color="#5B5B5B" />
+                    <Text style={styles.address}>{fullAddress}</Text>
+                  </View>
+                )}
+                {provider?.mobile_number && (
+                  <View style={styles.locationRow}>
+                    <Icon2 name="phone" size={20} color="#5B5B5B" />
+                    <Text style={styles.phone}>{provider?.mobile_number}</Text>
+                  </View>
+                )}
 
-              <View style={styles.buttonsContainer}>
-                <TouchableOpacity
-                  style={styles.button}
-                  onPress={() => {
-                    // navigation.navigate('BookService', {
-                    //   providerId,
-                    //   serviceId: provider?.service_id as number,
-                    // });
-                  }}>
-                  <Icon
-                    name="calendar-clock-outline"
-                    size={24}
-                    color={'white'}
-                  />
-                  <Text style={styles.buttonText}>Book Service</Text>
-                </TouchableOpacity>
-                {/* <TouchableOpacity
+                <View style={styles.buttonsContainer}>
+                  <TouchableOpacity
+                    style={styles.button}
+                    onPress={() => {
+                      // navigation.navigate('BookService', {
+                      //   providerId,
+                      //   serviceId: provider?.service_id as number,
+                      // });
+                    }}>
+                    <Icon
+                      name="calendar-clock-outline"
+                      size={24}
+                      color={'white'}
+                    />
+                    <Text style={styles.buttonText}>Book Service</Text>
+                  </TouchableOpacity>
+                  {/* <TouchableOpacity
                 style={[styles.button, styles.chatButton]}
                 onPress={() => {
                   // navigation.navigate('Chat');
@@ -156,75 +157,76 @@ const ServiceDetails = ({navigation, route}: ServiceDetailsScreenProps) => {
                 <Icon name="android-messages" size={24} color={'white'} />
                 <Text style={styles.buttonText}>Chat</Text>
               </TouchableOpacity> */}
+                </View>
               </View>
             </View>
-          </View>
-          <View style={styles.simpleDottedLine} />
-          <View style={styles.additionalDetails}>
-            <DetailCard
-              icon="briefcase-outline"
-              title="Experience"
-              value={
-                provider?.experience
-                  ? experience[String(provider.experience)]
-                  : 'N/A'
-              }
-            />
-            <DetailCard icon="cash" title="Rate" value={rateValue} />
-            <DetailCard
-              icon="format-list-bulleted"
-              title="Service"
-              value={serviceName || 'N/A'}
-            />
-            <DetailCard
-              icon="account-group-outline"
-              title="Category"
-              value={categoryName || 'N/A'}
-            />
-            <DetailCard
-              icon="calendar-clock"
-              title="Current Availability"
-              value={
-                provider?.business_hours_enabled === 1
-                  ? 'Available'
-                  : 'Not Available'
-              }
-            />
-            {provider?.specialization && (
-              <>
-                <SubHeading text="Specialization" />
-                <Text style={styles.cardValue}>
-                  {provider?.specialization! || 'N/A'}
-                </Text>
-              </>
-            )}
-            {provider?.skills && (
-              <>
-                <SubHeading text="Skills" />
-                <Text style={styles.cardValue}>
-                  {provider?.skills! || 'N/A'}
-                </Text>
-              </>
-            )}
-            {serviceImages && <SubHeading text="Service Images" />}
-            <FlatList
-              data={serviceImages}
-              renderItem={({item}) => (
-                <Image
-                  source={{uri: `${IMAGE_URL}${item}`}}
-                  style={styles.serviceImage}
-                />
+            <View style={styles.simpleDottedLine} />
+            <View style={styles.additionalDetails}>
+              <DetailCard
+                icon="briefcase-outline"
+                title="Experience"
+                value={
+                  provider?.experience
+                    ? experience[String(provider.experience)]
+                    : 'N/A'
+                }
+              />
+              <DetailCard icon="cash" title="Rate" value={rateValue} />
+              <DetailCard
+                icon="format-list-bulleted"
+                title="Service"
+                value={serviceName || 'N/A'}
+              />
+              <DetailCard
+                icon="account-group-outline"
+                title="Category"
+                value={categoryName || 'N/A'}
+              />
+              <DetailCard
+                icon="calendar-clock"
+                title="Current Availability"
+                value={
+                  provider?.business_hours_enabled === 1
+                    ? 'Available'
+                    : 'Not Available'
+                }
+              />
+              {provider?.specialization && (
+                <>
+                  <SubHeading text="Specialization" />
+                  <Text style={styles.cardValue}>
+                    {provider?.specialization! || 'N/A'}
+                  </Text>
+                </>
               )}
-              keyExtractor={(item, index) => index.toString()}
-              horizontal={true}
-              showsHorizontalScrollIndicator={false}
-            />
+              {provider?.skills && (
+                <>
+                  <SubHeading text="Skills" />
+                  <Text style={styles.cardValue}>
+                    {provider?.skills! || 'N/A'}
+                  </Text>
+                </>
+              )}
+              {serviceImages && <SubHeading text="Service Images" />}
+              <FlatList
+                data={serviceImages}
+                renderItem={({item}) => (
+                  <Image
+                    source={{uri: `${IMAGE_URL}${item}`}}
+                    style={styles.serviceImage}
+                  />
+                )}
+                keyExtractor={(item, index) => index.toString()}
+                horizontal={true}
+                showsHorizontalScrollIndicator={false}
+              />
 
-            {workingHours?.length > 0 && <SubHeading text="Working Hours" />}
-            <WorkingHours days={workingHours} />
-          </View>
-        </ScrollView>
-      )}
+              {workingHours?.length > 0 && <SubHeading text="Working Hours" />}
+              <WorkingHours days={workingHours} />
+            </View>
+          </ScrollView>
+        )}
+      </View>
     </SafeAreaView>
   );
 };
@@ -256,6 +258,7 @@ export default ServiceDetails;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#FF3131',
   },
   detailsContainer: {
     flexDirection: 'row',

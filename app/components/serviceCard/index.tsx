@@ -92,13 +92,14 @@ const styles = StyleSheet.create({
   location: {
     color: '#666',
     marginLeft: responsiveWidth(1),
+    paddingHorizontal: responsiveWidth(1),
   },
   button: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-evenly',
     backgroundColor: '#E3E3E3',
-    width: responsiveWidth(32.5),
+    width: responsiveWidth(35.5),
     paddingVertical: responsiveHeight(0.75),
     paddingHorizontal: responsiveWidth(2.5),
     borderRadius: responsiveWidth(5),

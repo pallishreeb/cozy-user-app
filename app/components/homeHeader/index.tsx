@@ -61,11 +61,11 @@ const Header: React.FC<HeaderProps> = ({
       {cancelable: true},
     );
   };
-  useEffect(() => {
-    if (Platform.OS === 'ios') {
-      StatusBar.setBarStyle('dark-content');
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (Platform.OS === 'ios') {
+  //     StatusBar.setBarStyle('dark-content');
+  //   }
+  // }, []);
 
   return (
     <View style={styles.container}>

@@ -73,17 +73,19 @@ const SearchResult = ({navigation, route}: SearchResultScreenProps) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      {/* <Header /> */}
-      <CustomHeader
-        isNotification={false}
-        onBackPress={() => {
-          navigation.goBack();
-        }}
-        onNotificationPress={() => {
-          navigation.navigate('Notification');
-        }}
-      />
-      {getContent()}
+      <View style={{flex: 1, backgroundColor: '#FFFFFF'}}>
+        {/* <Header /> */}
+        <CustomHeader
+          isNotification={false}
+          onBackPress={() => {
+            navigation.goBack();
+          }}
+          onNotificationPress={() => {
+            navigation.navigate('Notification');
+          }}
+        />
+        {getContent()}
+      </View>
     </SafeAreaView>
   );
 };
@@ -101,6 +103,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
+    backgroundColor: '#FF3131',
   },
   scrollViewContainer: {
     paddingTop: rh(2),

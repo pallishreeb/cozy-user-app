@@ -114,55 +114,57 @@ export default ({navigation}: HomeScreenProps) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Header
-        handleNavigation={handleNavigation}
-        handleSearch={text => {
-          setKeyword(text);
-        }}
-        onPressSearch={() => {
-          setKeyword('');
-          navigation.navigate('SearchResult', {keyword});
-        }}
-      />
-      {isLoading ? (
-        <Loader />
-      ) : error ? (
-        <Text style={styles.errorText}>
-          {error.message || 'An error occurred.'}
-        </Text>
-      ) : (
-        <ScrollView
-          style={{
-            flex: 1,
-            backgroundColor: '#FFFFFF',
-          }}>
-          <View style={styles.categoryHeaderContainer}>
-            <Text style={[styles.categoryTitle]}>{'Top Categories'}</Text>
-          </View>
-          <View style={styles.categoryHeaderContainer}>
-            <FlatList
-              data={categories}
-              renderItem={renderTopCategory}
-              keyExtractor={category => `${category.id}`}
-              horizontal
-              showsHorizontalScrollIndicator={false}
-            />
-          </View>
-          {categories?.length > 0 &&
-            categories.map((category, index) => (
-              <React.Fragment key={category.id}>
-                {renderCategoryServices({item: category, index})}
-              </React.Fragment>
-            ))}
-        </ScrollView>
-      )}
+      <View style={{flex: 1, backgroundColor: '#FFFFFF'}}>
+        <Header
+          handleNavigation={handleNavigation}
+          handleSearch={text => {
+            setKeyword(text);
+          }}
+          onPressSearch={() => {
+            setKeyword('');
+            navigation.navigate('SearchResult', {keyword});
+          }}
+        />
+        {isLoading ? (
+          <Loader />
+        ) : error ? (
+          <Text style={styles.errorText}>
+            {error.message || 'An error occurred.'}
+          </Text>
+        ) : (
+          <ScrollView
+            style={{
+              flex: 1,
+              backgroundColor: '#FFFFFF',
+            }}>
+            <View style={styles.categoryHeaderContainer}>
+              <Text style={[styles.categoryTitle]}>{'Top Categories'}</Text>
+            </View>
+            <View style={styles.categoryHeaderContainer}>
+              <FlatList
+                data={categories}
+                renderItem={renderTopCategory}
+                keyExtractor={category => `${category.id}`}
+                horizontal
+                showsHorizontalScrollIndicator={false}
+              />
+            </View>
+            {categories?.length > 0 &&
+              categories.map((category, index) => (
+                <React.Fragment key={category.id}>
+                  {renderCategoryServices({item: category, index})}
+                </React.Fragment>
+              ))}
+          </ScrollView>
+        )}
+      </View>
     </SafeAreaView>
   );
 };
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#FF3131',
   },
   categoryHeaderContainer: {
     flexDirection: 'row',

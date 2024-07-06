@@ -1,6 +1,11 @@
 import React from 'react';
-import {View, Text, StyleSheet, Dimensions} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 import {format} from 'date-fns';
+import {
+  responsiveHeight as rh,
+  responsiveWidth as rw,
+  responsiveFontSize as rf,
+} from 'react-native-responsive-dimensions';
 interface Day {
   name: string;
   isEnabled: boolean;
@@ -37,29 +42,27 @@ export const WorkingHours = ({days}: {days: Day[]}) => {
   );
 };
 
-const {width} = Dimensions.get('window');
-const rw = (percentage: number) => (width * percentage) / 100;
-
 const styles = StyleSheet.create({
   dayRow: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     marginHorizontal: rw(3),
-    marginVertical: 10,
-    flexWrap: 'wrap',
+    marginVertical: rh(1.25),
+    flexWrap: 'nowrap',
   },
   dayName: {
-    marginRight: 10,
+    marginRight: rw(2.5),
     fontWeight: 'bold',
     color: '#000',
+    fontSize: rf(2),
   },
   timePickerBox: {
-    borderWidth: 1,
+    borderWidth: rw(0.25),
     borderColor: '#ccc',
-    paddingVertical: 8,
-    paddingHorizontal: 16,
-    borderRadius: 5,
+    paddingVertical: rh(1),
+    paddingHorizontal: rw(4),
+    borderRadius: rw(1.25),
     minWidth: rw(38),
     justifyContent: 'center',
     alignItems: 'center',
@@ -74,5 +77,6 @@ const styles = StyleSheet.create({
     color: 'gray',
     fontWeight: '600',
     textTransform: 'capitalize',
+    fontSize: rf(2),
   },
 });

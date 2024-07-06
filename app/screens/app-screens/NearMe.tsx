@@ -90,19 +90,21 @@ const NearMe = ({navigation}: NearMeScreenProps) => {
   };
   return (
     <SafeAreaView style={styles.container}>
-      <Header
-        handleSearch={text => {
-          setZipcode(text as string);
-        }}
-        onPressSearch={searchResults}
-        handleNavigation={() => {
-          navigation.navigate('Notification');
-        }}
-        screenType="nearMe"
-        label="Your location"
-        placeholder="Enter Your Pin/Zip Code"
-      />
-      {/* {getContent()} */}
+      <View style={{flex: 1, backgroundColor: '#FFFFFF'}}>
+        <Header
+          handleSearch={text => {
+            setZipcode(text as string);
+          }}
+          onPressSearch={searchResults}
+          handleNavigation={() => {
+            navigation.navigate('Notification');
+          }}
+          screenType="nearMe"
+          label="Your location"
+          placeholder="Enter Your Pin/Zip Code"
+        />
+        {/* {getContent()} */}
+      </View>
     </SafeAreaView>
   );
 };
@@ -112,6 +114,7 @@ export default NearMe;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#FF3131',
   },
   scrollViewContainer: {
     paddingTop: rh(2),

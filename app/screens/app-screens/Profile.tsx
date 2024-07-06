@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text, SafeAreaView, ScrollView} from 'react-native';
+import {StyleSheet, Text, SafeAreaView, ScrollView, View} from 'react-native';
 import {
   responsiveHeight as rh,
   responsiveWidth as rw,
@@ -18,32 +18,34 @@ const Profile = ({navigation}: ProfileScreenProps) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <CustomHeader
-        isNotification={false}
-        onBackPress={() => {
-          navigation.goBack();
-        }}
-        onNotificationPress={() => {
-          navigation.navigate('Notification');
-        }}
-      />
-      {isLoading ? (
-        <Loader />
-      ) : error ? (
-        <Text style={styles.errorText}>
-          {error || 'Something Went Wrong!'}{' '}
-        </Text>
-      ) : (
-        <ScrollView contentContainerStyle={styles.scrollViewContainer}>
-          <Text style={styles.headerText1}>
-            <Text style={{color: '#333'}}>My</Text> Profile
+      <View style={{flex: 1, backgroundColor: '#FFFFFF'}}>
+        <CustomHeader
+          isNotification={false}
+          onBackPress={() => {
+            navigation.goBack();
+          }}
+          onNotificationPress={() => {
+            navigation.navigate('Notification');
+          }}
+        />
+        {isLoading ? (
+          <Loader />
+        ) : error ? (
+          <Text style={styles.errorText}>
+            {error || 'Something Went Wrong!'}{' '}
           </Text>
-          <PersonalProfile
-            initialValues={profileData!}
-            updateProfileData={updateProfileData}
-          />
-        </ScrollView>
-      )}
+        ) : (
+          <ScrollView contentContainerStyle={styles.scrollViewContainer}>
+            <Text style={styles.headerText1}>
+              <Text style={{color: '#333'}}>My</Text> Profile
+            </Text>
+            <PersonalProfile
+              initialValues={profileData!}
+              updateProfileData={updateProfileData}
+            />
+          </ScrollView>
+        )}
+      </View>
     </SafeAreaView>
   );
 };
@@ -53,6 +55,7 @@ export default Profile;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#FF3131',
   },
   scrollViewContainer: {
     paddingTop: rh(2),
